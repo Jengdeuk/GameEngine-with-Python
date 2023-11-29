@@ -1,15 +1,11 @@
-import pygame
 import numpy as np
 
 from pygame.locals import *
 from OpenGL.GL import *
-from OpenGL.GLUT import *
 from OpenGL.GLU import *
+from OpenGL.GLUT import *
 
-from Physics import *
-from Graphics import *
-
-def calculate_distance(point1, point2):
+def CalcuateDistance(point1, point2):
     return np.linalg.norm(np.array(point1) - np.array(point2))
 
 class Camera:
