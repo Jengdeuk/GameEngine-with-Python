@@ -22,7 +22,6 @@ def RenderGrid(size, step):
 # Rendering: Texture Mapping
 class Graphics:
     def __init__(self, filename):
-        self.id = id
         self.objpath = "Resources/Model/" + filename + ".obj"
         self.texpath = "Resources/Texture/" + filename + ".jpg"
         self.vertices, self.texcoords, self.faces, self.texture = self.LoadObj()
