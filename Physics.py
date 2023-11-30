@@ -21,23 +21,22 @@ class Physics:
     def OBBCollision(self, other):
         distance = other.position - self.position
 
-        # obb1의 축을 기준으로 obb2의 좌표를 변환
+        # self 축 검사
         for i in range(3):
             axis = self.orientation[i]
             projection = np.abs(np.dot(distance, axis))
-            extent = np.dot(other.half_lengths, np.abs(other.orientation[i]))
+            extent = np.abs(np.dot(other.half_lengths, axis))
             if projection > self.half_lengths[i] + extent:
                 return False
 
-        # obb2의 축을 기준으로 obb1의 좌표를 변환
+        # other 축 검사
         for i in range(3):
             axis = other.orientation[i]
             projection = np.abs(np.dot(distance, axis))
-            extent = np.dot(self.half_lengths, np.abs(self.orientation[i]))
+            extent = np.abs(np.dot(self.half_lengths, axis))
             if projection > other.half_lengths[i] + extent:
                 return False
 
-        # 두 OBB가 겹치는 경우
         return True
 
     def MoveForward(self):
